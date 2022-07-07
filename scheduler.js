@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 });
 
 schedule.scheduleJob({ hour: 5, minute: 0 }, () => {
-	exec("python hoyolab.py", (error, stdout, stderr) => {
+	exec("python3 hoyolab.py", (error, stdout, stderr) => {
 		const all = stdout + stderr;
 		if (error || all.indexOf('Error: ') !== -1) {
 			const mailOptions = {
