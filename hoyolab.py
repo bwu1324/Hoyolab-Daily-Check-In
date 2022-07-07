@@ -15,7 +15,7 @@ cookie = os.environ.get('COOKIE', '')
 logging.info('Reading Hoyolab cookie from environment variable ..')
 
 if (cookie == ''):
-    logging.error("Variable 'COOKIE' not found, please ensure that variable exists")
+    logging.error("Error: Variable 'COOKIE' not found, please ensure that variable exists")
     exit(1)
 else: 
     logging.info("Variable 'COOKIE' found")
@@ -45,7 +45,7 @@ for no in range(len(cookies)):
     ).text)
 
     if (res.get('retcode', 0) != 0):
-        logging.error("Variable 'COOKIE' not valid, please ensure that value is valid")
+        logging.error("Error: Variable 'COOKIE' not valid, please ensure that value is valid")
         fail +=1
         continue
     else:
@@ -112,7 +112,7 @@ for no in range(len(cookies)):
             author_url = 'https://honkaiimpact3.hoyoverse.com/global/en-us'
             author_icon = 'https://img-os-static.hoyolab.com/communityWeb/upload/bbb364aaa7d51d168c96aaa6a1939cba.png'
         else:
-            logging.error('Genshin Or Honkai Account not found !')
+            logging.error('Error: Genshin Or Honkai Account not found !')
             exit(1)
 
         logging.info('Checking in UID {} ...'.format(uid))
@@ -173,6 +173,6 @@ for no in range(len(cookies)):
 
 # logging.info(f'{fail}/{len(cookies)} Account executed')
 if fail > 0:
-    logging.error(f'{fail} invalid account detected')
+    logging.error(f'Error: {fail} invalid account detected')
 logging.info('Script Ended')
 exit(0)
