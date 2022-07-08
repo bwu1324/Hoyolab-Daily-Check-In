@@ -1,9 +1,10 @@
-require('dotenv').config();
 const schedule = require('node-schedule');
 const { exec } = require("child_process");
 const { google } = require('googleapis');
 const nodemailer = require('nodemailer');
 const path = require('path');
+
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const OAuth2 = google.auth.OAuth2;
 
