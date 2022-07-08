@@ -50,7 +50,7 @@ async function createTransporter() {
 
 function runDailies() {
 	console.log('Running hoyolab.py');
-	exec(`python3 ${path.join(__dirname, hoyolab.py)}`, async (error, stdout, stderr) => {
+	exec(`python3 ${path.join(__dirname, 'hoyolab.py')}`, async (error, stdout, stderr) => {
 		const all = stdout + stderr;
 		console.log('Error: ' + error);
 		console.log('stdout: ' + stdout);
