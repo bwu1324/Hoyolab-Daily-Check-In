@@ -3,6 +3,7 @@ const schedule = require('node-schedule');
 const { exec } = require("child_process");
 const { google } = require('googleapis');
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 const OAuth2 = google.auth.OAuth2;
 
@@ -49,7 +50,7 @@ async function createTransporter() {
 
 function runDailies() {
 	console.log('Running hoyolab.py');
-	exec("python hoyolab.py", async (error, stdout, stderr) => {
+	exec(`python3 ${path.join(__dirname, hoyolab.py)}`, async (error, stdout, stderr) => {
 		const all = stdout + stderr;
 		console.log('Error: ' + error);
 		console.log('stdout: ' + stdout);
