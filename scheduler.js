@@ -107,7 +107,7 @@ async function testEmail() {
 	}
 }
 
-schedule.scheduleJob({ hour: 5, minute: 0 }, runDailies);
+schedule.scheduleJob({ hour: 6, minute: 30 }, runDailies);
 
 testEmail().then(() => {
 	runDailies();
