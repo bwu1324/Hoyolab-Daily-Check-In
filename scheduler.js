@@ -107,7 +107,12 @@ async function testEmail() {
 	}
 }
 
-schedule.scheduleJob({ hour: 6, minute: 30 }, runDailies);
+const rule = new schedule.RecurrenceRule();
+rule.hour = 0;
+rule.minute = 15;
+rule.tz = 'Etc/GMT-8';
+
+schedule.scheduleJob(rule, runDailies);
 
 testEmail().then(() => {
 	runDailies();
