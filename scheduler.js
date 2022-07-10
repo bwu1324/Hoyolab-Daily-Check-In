@@ -80,6 +80,30 @@ function runDailies() {
 				console.log(error);
 			}
 		}
+		if (all.indexOf('already checked in today') !== -1) {
+			console.log('Already checked in today, sending email');
+			const mailOptions = {
+				from: MAIL_USER,
+				to: ALERT_SEND,
+				subject: 'Hoyolab Daily Checkin Already Checked In Error',
+				text: `Error Messages:\nError:\n${error}\n\nstdout:\n${stdout}\n\nstderr:\n${stderr}`
+			};
+
+			try {
+				const transporter = await createTransporter();
+
+				transporter.sendMail(mailOptions, function (error, info) {
+					if (error) {
+						console.log(error);
+						return
+					}
+					console.log('Email sent! Info: ' + info.response);
+				});
+			}
+			catch (error) {
+				console.log(error);
+			}
+		}
 	});
 }
 
